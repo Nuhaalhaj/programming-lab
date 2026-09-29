@@ -1,0 +1,143 @@
+package busstop;
+
+import java.util.Scanner;
+
+public class Busstop {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("How many stops are on the route?");
+        int StopsNum = scanner.nextInt();
+
+        System.out.println("What is the bus's seating capacity?");
+        int capacity = scanner.nextInt();
+
+        String[] stopname = new String[StopsNum];
+        int[] passengersBoarding = new int[StopsNum];
+        int[] passengersGettingOff = new int[StopsNum];
+        int[] occupancy = new int[StopsNum];
+
+        int currentpassengers = 0;
+        int overcapacity = 0;
+        int busiestStop = 0;
+        int totalOccupancy = 0;
+
+        scanner.nextLine();
+
+        for (int i = 0; i < StopsNum; i++) {
+
+            System.out.println("Enter the stop name:");
+            stopname[i] = scanner.nextLine();
+
+            System.out.println("Enter the number of passengers boarding:");
+            passengersBoarding[i] = scanner.nextInt();
+
+            System.out.println("Enter the number of passengers getting off:");
+            passengersGettingOff[i] = scanner.nextInt();
+
+            currentpassengers = currentpassengers
+                    + passengersBoarding[i]
+                    - passengersGettingOff[i];
+
+            // Check if occupancy becomes negative
+            if (currentpassengers < 0) {
+
+                System.out.println(
+                        "Data error at " + stopname[i]
+                        + ": cannot have more passengers alighting "
+                        + "than are currently on the bus.");
+
+                System.out.println("Occupancy set to 0.");
+
+                currentpassengers = 0;
+            }
+
+            occupancy[i] = currentpassengers;
+
+            totalOccupancy += currentpassengers;
+
+            // Capacity check
+            if (currentpassengers > capacity) {
+
+                System.out.println(
+                        "Warning: Bus is over capacity at "
+                        + stopname[i] + "!");
+
+                overcapacity++;
+            }
+
+            // busiest stop
+            if (passengersBoarding[i]
+                    > passengersBoarding[busiestStop]) {
+
+                busiestStop = i;
+            }
+
+            scanner.nextLine();
+        }
+
+
+
+        System.out.println("\nBUS ROUTE INFORMATION");
+
+        for (int i = 0; i < StopsNum; i++) {
+
+            System.out.println("\nStop Name: " + stopname[i]);
+
+            System.out.println(
+                    "Passengers Boarding: "
+                    + passengersBoarding[i]);
+
+            System.out.println(
+                    "Passengers Getting Off: "
+                    + passengersGettingOff[i]);
+
+            System.out.println(
+                    "Current Occupancy: "
+                    + occupancy[i]);
+        }
+
+
+        // the average
+        double average = (double) totalOccupancy / StopsNum;
+
+
+        // Statistics
+        System.out.println("\nSTATISTICS");
+
+        System.out.println(
+                "The busiest stop: "
+                + stopname[busiestStop]);
+
+        System.out.println(
+                "Passengers boarding at busiest stop: "
+                + passengersBoarding[busiestStop]);
+
+        System.out.println(
+                "The average number of passengers: "
+                + average);
+
+        System.out.println(
+                "Number of stops exceeded capacity: "
+                + overcapacity);
+
+
+        // Final station check
+        if (currentpassengers != 0) {
+
+            System.out.println(
+                    "Warning: " + currentpassengers
+                    + " passengers still on the bus after the final stop"
+                    + " -- please check your data.");
+
+        } else {
+
+            System.out.println(
+                    "Final occupancy is 0.");
+        }
+
+        scanner.close();
+    }
+}
