@@ -41,7 +41,7 @@ public class Busstop {
                     + passengersBoarding[i]
                     - passengersGettingOff[i];
 
-            // Check if occupancy becomes negative
+
             if (currentpassengers < 0) {
 
                 System.out.println(
