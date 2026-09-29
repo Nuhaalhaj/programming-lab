@@ -1,0 +1,308 @@
+package matchtracker;
+
+import java.util.Scanner;
+
+public class MatchTracker {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        
+        System.out.println("Tournament Fixture");
+        System.out.println("Match 1: Team A vs Team B");
+        System.out.println("Match 2: Team A vs Team C");
+        System.out.println("Match 3: Team A vs Team D");
+        System.out.println("Match 4: Team B vs Team C");
+        System.out.println("Match 5: Team B vs Team D");
+        System.out.println("Match 6: Team C vs Team D");
+
+        
+        System.out.println("Enter the score for Match 1 Team A:");
+        int teamAscore = scanner.nextInt();
+
+        System.out.println("Enter the score for Match 1 Team B:");
+        int teamBscore = scanner.nextInt();
+
+        
+        System.out.println("Enter the score for Match 2 Team A:");
+        int teamAscore2 = scanner.nextInt();
+
+        System.out.println("Enter the score for Match 2 Team C:");
+        int teamCscore2 = scanner.nextInt();
+
+        
+        System.out.println("Enter the score for Match 3 Team A:");
+        int teamAscore3 = scanner.nextInt();
+
+        System.out.println("Enter the score for Match 3 Team D:");
+        int teamDscore3 = scanner.nextInt();
+
+        
+        System.out.println("Enter the score for Match 4 Team B:");
+        int teamBscore4 = scanner.nextInt();
+
+        System.out.println("Enter the score for Match 4 Team C:");
+        int teamCscore4 = scanner.nextInt();
+
+        
+        System.out.println("Enter the score for Match 5 Team B:");
+        int teamBscore5 = scanner.nextInt();
+
+        System.out.println("Enter the score for Match 5 Team D:");
+        int teamDscore5 = scanner.nextInt();
+
+        
+        System.out.println("Enter the score for Match 6 Team C:");
+        int teamCscore6 = scanner.nextInt();
+
+        System.out.println("Enter the score for Match 6 Team D:");
+        int teamDscore6 = scanner.nextInt();
+
+
+        
+        System.out.println("\nThe scores for all matches:");
+
+        System.out.println("Match 1: Team A: " + teamAscore
+                + " Team B: " + teamBscore);
+
+        System.out.println("Match 2: Team A: " + teamAscore2
+                + " Team C: " + teamCscore2);
+
+        System.out.println("Match 3: Team A: " + teamAscore3
+                + " Team D: " + teamDscore3);
+
+        System.out.println("Match 4: Team B: " + teamBscore4
+                + " Team C: " + teamCscore4);
+
+        System.out.println("Match 5: Team B: " + teamBscore5
+                + " Team D: " + teamDscore5);
+
+        System.out.println("Match 6: Team C: " + teamCscore6
+                + " Team D: " + teamDscore6);
+
+
+        // Statistics
+        int winsA = 0, drawsA = 0, lossesA = 0, pointsA = 0;
+        int winsB = 0, drawsB = 0, lossesB = 0, pointsB = 0;
+        int winsC = 0, drawsC = 0, lossesC = 0, pointsC = 0;
+        int winsD = 0, drawsD = 0, lossesD = 0, pointsD = 0;
+
+
+        // Match 1: A vs B
+        if (teamAscore > teamBscore) {
+
+            winsA++;
+            lossesB++;
+            pointsA += 3;
+
+        } else if (teamBscore > teamAscore) {
+
+            winsB++;
+            lossesA++;
+            pointsB += 3;
+
+        } else {
+
+            drawsA++;
+            drawsB++;
+            pointsA++;
+            pointsB++;
+        }
+
+
+        // Match 2: A vs C
+        if (teamAscore2 > teamCscore2) {
+
+            winsA++;
+            lossesC++;
+            pointsA += 3;
+
+        } else if (teamCscore2 > teamAscore2) {
+
+            winsC++;
+            lossesA++;
+            pointsC += 3;
+
+        } else {
+
+            drawsA++;
+            drawsC++;
+            pointsA++;
+            pointsC++;
+        }
+
+
+        // Match 3: A vs D
+        if (teamAscore3 > teamDscore3) {
+
+            winsA++;
+            lossesD++;
+            pointsA += 3;
+
+        } else if (teamDscore3 > teamAscore3) {
+
+            winsD++;
+            lossesA++;
+            pointsD += 3;
+
+        } else {
+
+            drawsA++;
+            drawsD++;
+            pointsA++;
+            pointsD++;
+        }
+
+
+        // Match 4: B vs C
+        if (teamBscore4 > teamCscore4) {
+
+            winsB++;
+            lossesC++;
+            pointsB += 3;
+
+        } else if (teamCscore4 > teamBscore4) {
+
+            winsC++;
+            lossesB++;
+            pointsC += 3;
+
+        } else {
+
+            drawsB++;
+            drawsC++;
+            pointsB++;
+            pointsC++;
+        }
+
+
+        // Match 5: B vs D
+        if (teamBscore5 > teamDscore5) {
+
+            winsB++;
+            lossesD++;
+            pointsB += 3;
+
+        } else if (teamDscore5 > teamBscore5) {
+
+            winsD++;
+            lossesB++;
+            pointsD += 3;
+
+        } else {
+
+            drawsB++;
+            drawsD++;
+            pointsB++;
+            pointsD++;
+        }
+
+
+        // Match 6: C vs D
+        if (teamCscore6 > teamDscore6) {
+
+            winsC++;
+            lossesD++;
+            pointsC += 3;
+
+        } else if (teamDscore6 > teamCscore6) {
+
+            winsD++;
+            lossesC++;
+            pointsD += 3;
+
+        } else {
+
+            drawsC++;
+            drawsD++;
+            pointsC++;
+            pointsD++;
+        }
+
+
+        // Goals For
+        int goalsForA = teamAscore + teamAscore2 + teamAscore3;
+        int goalsForB = teamBscore + teamBscore4 + teamBscore5;
+        int goalsForC = teamCscore2 + teamCscore4 + teamCscore6;
+        int goalsForD = teamDscore3 + teamDscore5 + teamDscore6;
+
+
+        // Goals Against
+        int goalsAgainstA = teamBscore + teamCscore2 + teamDscore3;
+        int goalsAgainstB = teamAscore + teamCscore4 + teamDscore5;
+        int goalsAgainstC = teamAscore2 + teamBscore4 + teamDscore6;
+        int goalsAgainstD = teamAscore3 + teamBscore5 + teamCscore6;
+
+
+        // Goal Difference
+        int goalDifferenceA = goalsForA - goalsAgainstA;
+        int goalDifferenceB = goalsForB - goalsAgainstB;
+        int goalDifferenceC = goalsForC - goalsAgainstC;
+        int goalDifferenceD = goalsForD - goalsAgainstD;
+
+
+        
+        System.out.println("\nSTANDINGS TABLE");
+
+        System.out.println(
+                "Team\tPlayed\tWins\tDraws\tLosses\tPoints\tGoal Difference");
+
+        System.out.println(
+                "A\t3\t" + winsA + "\t" + drawsA + "\t"
+                + lossesA + "\t" + pointsA + "\t" + goalDifferenceA);
+
+        System.out.println(
+                "B\t3\t" + winsB + "\t" + drawsB + "\t"
+                + lossesB + "\t" + pointsB + "\t" + goalDifferenceB);
+
+        System.out.println(
+                "C\t3\t" + winsC + "\t" + drawsC + "\t"
+                + lossesC + "\t" + pointsC + "\t" + goalDifferenceC);
+
+        System.out.println(
+                "D\t3\t" + winsD + "\t" + drawsD + "\t"
+                + lossesD + "\t" + pointsD + "\t" + goalDifferenceD);
+
+
+        // champion
+        String champion = "Team A";
+        int highestPoints = pointsA;
+        int highestGoalDifference = goalDifferenceA;
+
+
+        if (pointsB > highestPoints
+                || (pointsB == highestPoints
+                && goalDifferenceB > highestGoalDifference)) {
+
+            champion = "Team B";
+            highestPoints = pointsB;
+            highestGoalDifference = goalDifferenceB;
+        }
+
+
+        if (pointsC > highestPoints
+                || (pointsC == highestPoints
+                && goalDifferenceC > highestGoalDifference)) {
+
+            champion = "Team C";
+            highestPoints = pointsC;
+            highestGoalDifference = goalDifferenceC;
+        }
+
+
+        if (pointsD > highestPoints
+                || (pointsD == highestPoints
+                && goalDifferenceD > highestGoalDifference)) {
+
+            champion = "Team D";
+            highestPoints = pointsD;
+            highestGoalDifference = goalDifferenceD;
+        }
+
+
+        System.out.println("\nTournament Champion: " + champion);
+
+        scanner.close();
+    }
+}
